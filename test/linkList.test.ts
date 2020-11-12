@@ -1,4 +1,5 @@
 import LinkList from '../src'
+import { LinkNode } from '../src'
 
 describe('Link List', () => {
   let list: LinkList | null
@@ -85,5 +86,40 @@ describe('Link List', () => {
     expect(list.head.next.value).toEqual({ name: 'wyfy' })
     expect(list.head.next.id).toEqual(2)
     expect(list.head.next.next.value).toEqual({ name: 'duy' })
+  })
+
+  it('should find a node with id', () => {
+    list.addNodeHead({ name: 'duy' })
+    list.addNodeHead({ name: 'wyfy' })
+    list.addNodeHead({ name: 'alex' })
+
+    const node = list.findNode(2) as LinkNode
+    expect(node.value).toEqual({ name: 'wyfy' })
+  })
+
+  it('should return a string if find a node with empty list', () => {
+    const node = list.findNode(1)
+    expect(node).toEqual('List is empty')
+  })
+
+  it('should delete a node with id', () => {
+    list.addNodeHead({ name: 'duy' })
+    list.addNodeHead({ name: 'wyfy' })
+    list.addNodeHead({ name: 'alex' })
+
+    const node1 = list.deleteNode(1)
+    const node3 = list.deleteNode(3)
+
+    expect(list.length).toEqual(1)
+
+    expect(node1).toEqual(1)
+    expect(list.head.value).toEqual({ name: 'wyfy' })
+
+    expect(node3).toEqual(3)
+  })
+
+  it('should return a string if delete a node with empty list', () => {
+    const node = list.deleteNode(1)
+    expect(node).toEqual('List is empty')
   })
 })

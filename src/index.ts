@@ -1,4 +1,4 @@
-type LinkNode = {
+export type LinkNode = {
   id?: number
   value: any
   next?: any
@@ -31,11 +31,10 @@ class LinkList {
       this.head.next = node
       return
     }
-    if (this.tail) {
-      this.tail.next = node
-      this.tail = node
-      return
-    }
+
+    ;(this.tail as LinkNode).next = node
+    this.tail = node
+    return
   }
 
   addNodeHead = (value: any) => {
@@ -56,40 +55,43 @@ class LinkList {
       this.head.next = this.tail
       return
     }
-    if (this.tail) {
-      const tempHead = this.head
-      this.head = node
-      this.head.next = tempHead
-      return
-    }
+    const tempHead = this.head
+    this.head = node
+    this.head.next = tempHead
+    return
   }
 
   findNode = (id: number) => {
-    let currentNode = this.head
+    if (this.length === 0) return 'List is empty'
+
+    let currentNode = this.head as LinkNode
 
     for (let index = 0; index < this.length; index++) {
-      if (currentNode?.id === id) {
+      if (currentNode.id === id) {
         return currentNode
       }
-      currentNode = currentNode?.next
+      currentNode = currentNode.next
     }
   }
 
   deleteNode = (id: number) => {
-    let currentNode = this.head
+    if (this.length === 0) return 'List is empty'
+
+    let currentNode = this.head as LinkNode
     let prevNode: null | LinkNode = null
 
     for (let index = 0; index < this.length; index++) {
-      if (currentNode?.id === id) {
+      if (currentNode.id === id) {
+        this.length--
         if (prevNode) {
           prevNode.next = currentNode.next
-          return
+          return id
         }
         this.head = currentNode.next
-        return
+        return id
       }
       prevNode = currentNode
-      currentNode = currentNode?.next
+      currentNode = currentNode.next
     }
   }
 }
