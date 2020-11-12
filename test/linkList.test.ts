@@ -107,15 +107,16 @@ describe('Link List', () => {
     list.addNodeHead({ name: 'wyfy' })
     list.addNodeHead({ name: 'alex' })
 
-    const node1 = list.deleteNode(1)
-    const node3 = list.deleteNode(3)
+    const node1 = list.deleteNode(1) as LinkNode
+    const node3 = list.deleteNode(3) as LinkNode
 
     expect(list.length).toEqual(1)
 
-    expect(node1).toEqual(1)
+    expect(node1).toHaveProperty('id', 1)
+    expect(node1).toHaveProperty('value', { name: 'duy' })
     expect(list.head.value).toEqual({ name: 'wyfy' })
 
-    expect(node3).toEqual(3)
+    expect(node3.id).toEqual(3)
   })
 
   it('should return a string if delete a node with empty list', () => {

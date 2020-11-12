@@ -1,9 +1,13 @@
 {
-  "name": "@wyfy/link-list",
+  "name": "@wyfy/linked-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "A package that helps you create a simple linked list",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js"
+  ],
   "scripts": {
     "test": "jest --forceExit --coverage --verbose false",
     "watch-test": "npm run test -- --watchAll",
@@ -21,7 +25,9 @@
   },
   "homepage": "https://github.com/Wyfy0107/npm-package#readme",
   "dependencies": {
+    "@microsoft/tsdoc": "^0.12.21",
     "@types/jest": "^26.0.15",
+    "@wyfy/linked-list": "file:",
     "@wyfy/npm-package": "file:",
     "typescript": "^4.0.5"
   },

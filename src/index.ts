@@ -14,51 +14,71 @@ class LinkList {
     this.length = 0
   }
 
-  addNodeTail = (value: any) => {
+  /**
+   * @remarks
+   * Adds a new node from the tail,
+   * every node is an object with id, value and next property,
+   * @param value
+   * Will be stored in the node's value property
+   * @returns
+   * The newly added node
+   */
+  addNodeTail = (value: any): LinkNode => {
     this.length++
 
     const node = {
       id: this.length,
       value,
+      next: null,
     }
 
     if (!this.head) {
       this.head = node
-      return
+      return this.head
     }
     if (this.head && !this.head.next) {
       this.tail = node
       this.head.next = node
-      return
+      return this.tail
     }
 
     ;(this.tail as LinkNode).next = node
     this.tail = node
-    return
+    return this.tail
   }
 
-  addNodeHead = (value: any) => {
+  /**
+   * @remarks
+   * Adds a new node from the head,
+   * every node is an object with id, value and next property
+   * @param value
+   * will be stored in the node's value property
+   * @returns
+   * The newly added node
+   */
+  addNodeHead = (value: any): LinkNode => {
     this.length++
 
     const node = {
       id: this.length,
       value,
+      next: null,
     }
 
     if (!this.head) {
       this.head = node
-      return
+      return this.head
     }
     if (this.head && !this.head.next) {
       this.tail = this.head
       this.head = node
       this.head.next = this.tail
-      return
+      return this.head
     }
     const tempHead = this.head
     this.head = node
     this.head.next = tempHead
-    return
+    return this.head
   }
 
   findNode = (id: number) => {
@@ -85,10 +105,10 @@ class LinkList {
         this.length--
         if (prevNode) {
           prevNode.next = currentNode.next
-          return id
+          return currentNode
         }
         this.head = currentNode.next
-        return id
+        return currentNode
       }
       prevNode = currentNode
       currentNode = currentNode.next
