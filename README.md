@@ -7,7 +7,7 @@
 ## Create a list
 
 ```javascript
-import LinkList from '@wyfy/linked-list
+import LinkList from '@wyfy/linked-list'
 const list = new LinkList()
 ```
 
