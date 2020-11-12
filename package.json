@@ -1,6 +1,6 @@
 {
   "name": "@wyfy/linked-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package that helps you create a simple linked list",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
