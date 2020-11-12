@@ -8,6 +8,10 @@
     "dist/index.d.ts",
     "dist/index.js"
   ],
+  "keywords": [
+    "Data-Structure",
+    "Linked-List"
+  ],
   "scripts": {
     "test": "jest --forceExit --coverage --verbose false",
     "watch-test": "npm run test -- --watchAll",
