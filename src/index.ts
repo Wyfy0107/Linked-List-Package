@@ -114,6 +114,33 @@ class LinkList {
       currentNode = currentNode.next
     }
   }
+
+  reverse = (curr: LinkNode, prev: LinkNode | null, next: LinkNode | null) => {
+    if (curr.id === 1) {
+      this.tail = curr
+    }
+
+    if (curr.id === this.length) {
+      this.head = curr
+      curr.next = prev
+      return
+    }
+
+    next = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next as LinkNode
+
+    this.reverse(curr, prev, next)
+  }
+
+  printList = (currentNode: LinkNode) => {
+    if (!currentNode.next) {
+      return
+    }
+    console.log('print', currentNode)
+    this.printList(currentNode.next)
+  }
 }
 
 export default LinkList

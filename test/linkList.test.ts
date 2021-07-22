@@ -1,3 +1,4 @@
+import { isTypeReferenceNode } from 'typescript'
 import LinkList from '../src'
 import { LinkNode } from '../src'
 
@@ -122,5 +123,21 @@ describe('Link List', () => {
   it('should return a string if delete a node with empty list', () => {
     const node = list.deleteNode(1)
     expect(node).toEqual('List is empty')
+  })
+
+  it('should reverse the list', () => {
+    list.addNodeHead({ name: 'a' })
+    list.addNodeTail({ name: 'b' })
+    list.addNodeTail({ name: 'c' })
+    list.addNodeTail({ name: 'd' })
+    console.log('length', list.length)
+
+    list.reverse(list.head, null, null)
+    list.printList(list.head)
+
+    expect(list.head.value).toEqual({ name: 'd' })
+    expect(list.head.next.value).toEqual({ name: 'c' })
+    expect(list.head.next.next.value).toEqual({ name: 'b' })
+    expect(list.head.next.next.next.value).toEqual({ name: 'a' })
   })
 })

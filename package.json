@@ -30,12 +30,12 @@
   "homepage": "https://github.com/Wyfy0107/npm-package#readme",
   "dependencies": {
     "@microsoft/tsdoc": "^0.12.21",
-    "@types/jest": "^26.0.15",
     "@wyfy/linked-list": "file:",
     "@wyfy/npm-package": "file:",
     "typescript": "^4.0.5"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4"
   }
